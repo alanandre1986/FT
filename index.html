@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <title>Minha FT — Acesso</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <div class="brand-mark">FT</div>
+      <div><h1>Minha FT</h1><p>Acesso seguro à plataforma</p></div>
+    </header>
+
+    <section id="auth-view" class="panel">
+      <div class="tabs" role="tablist" aria-label="Acesso">
+        <button class="tab active" data-mode="login" type="button">Entrar</button>
+        <button class="tab" data-mode="signup" type="button">Criar conta</button>
+      </div>
+
+      <form id="auth-form">
+        <h2 id="form-title">Entrar na sua conta</h2>
+        <label for="full-name" id="name-label" class="hidden">Nome completo</label>
+        <input id="full-name" class="hidden" type="text" autocomplete="name" placeholder="Nome completo">
+
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="username" required placeholder="seu@email.com">
+
+        <label for="password">Senha</label>
+        <input id="password" type="password" autocomplete="current-password" required minlength="8" placeholder="Mínimo de 8 caracteres">
+
+        <div id="role-wrap" class="hidden">
+          <label for="signup-role">Tipo de conta</label>
+          <select id="signup-role">
+            <option value="user">Usuário</option>
+            <option value="admin">Administrador (requer autorização)</option>
+          </select>
+          <p class="hint">Contas de administrador só ficam ativas após autorização segura no banco de dados.</p>
+        </div>
+
+        <button class="primary" id="submit-btn" type="submit">Entrar</button>
+        <button class="link-button" id="forgot-btn" type="button">Esqueci minha senha</button>
+        <p id="auth-message" class="message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="profile-view" class="panel hidden">
+      <div class="profile-head">
+        <div class="avatar" id="avatar">U</div>
+        <div><p class="eyebrow" id="role-label">PERFIL</p><h2 id="profile-title">Bem-vindo(a)</h2><p id="profile-email" class="muted"></p></div>
+      </div>
+      <div class="profile-card">
+        <h3>Seu perfil</h3>
+        <p id="profile-description">Você entrou com sucesso.</p>
+        <p><strong>Tipo de acesso:</strong> <span id="profile-role"></span></p>
+        <p><strong>Status:</strong> <span id="profile-status">Ativo</span></p>
+      </div>
+
+      <form id="password-form" class="password-card">
+        <h3>Atualizar senha</h3>
+        <p class="muted">Use uma senha forte, com pelo menos 8 caracteres.</p>
+        <label for="new-password">Nova senha</label>
+        <input id="new-password" type="password" minlength="8" autocomplete="new-password" required placeholder="Digite a nova senha">
+        <label for="confirm-password">Confirmar nova senha</label>
+        <input id="confirm-password" type="password" minlength="8" autocomplete="new-password" required placeholder="Repita a nova senha">
+        <button class="primary" type="submit">Atualizar senha</button>
+        <p id="password-message" class="message" role="status"></p>
+      </form>
+      <button id="logout-btn" class="secondary" type="button">Sair da conta</button>
+    </section>
+
+    <footer>Minha FT · Não compartilhe sua senha com outras pessoas.</footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
